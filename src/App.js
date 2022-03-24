@@ -2,22 +2,20 @@ import Header from './containers/Header';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import ProductListing from './containers/ProductListing';
 import ProductDetail from './containers/ProductDetail';
+import Error404 from './containers/Error404';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
+    <>
      <Router>
-      
+     <Header />
       <Routes>
-        <Route path="/" element={<ProductListing />} />
-        <Route  path="/product/:productId" element={<ProductDetail />} />
-        <Route>
-          404
-        </Route>
+        <Route exact path="/" element={<ProductListing />} />
+        <Route exact path="/product/:productId" element={<ProductDetail />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 
